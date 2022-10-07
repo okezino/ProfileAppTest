@@ -4,8 +4,9 @@ import com.example.profileapp.data.model.Resource
 import com.example.profileapp.data.model.UserProfile
 import com.example.profileapp.domain.base.BaseUseCase
 import com.example.profileapp.domain.repository.UserProfileRepository
+import javax.inject.Inject
 
-class GetUserProfileUseCase (val userProfileRepository: UserProfileRepository) :
+class GetUserProfileUseCase @Inject constructor(private val userProfileRepository: UserProfileRepository) :
     BaseUseCase<
             String, GetUserProfileUseCase.Response>() {
 
