@@ -13,7 +13,7 @@ object ApiCallsHandler {
     private const val ERROR_KEY = "error"
 
 
-    fun getErrorMessage(responseBody: ResponseBody): String {
+    private fun getErrorMessage(responseBody: ResponseBody): String {
         return try {
             val jsonObject = JSONObject(responseBody.string())
             when {
