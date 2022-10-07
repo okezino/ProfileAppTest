@@ -1,7 +1,10 @@
 package com.example.profileapp.data.model
 
-sealed class Resource<out T>(val data: T? = null, val messages: String? = null) {
-    class Success<T>(data: T) : Resource<T>(data)
-    class Error<T>(error : String) : Resource<T>(messages = error)
-    class Loading<T>() : Resource<T>()
+sealed class Resource<out T>(val datas: T? = null, val messages: String? = null) {
+
+    data class Success<T>(val data: T) : Resource<T>(data)
+    data class Error<T>(val message: String, val data: T? = null) : Resource<T>(null, message)
+    data class Loading<T>(val data: T? = null) : Resource<T>(data)
+
 }
+
