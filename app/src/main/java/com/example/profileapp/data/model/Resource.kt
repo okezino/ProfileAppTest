@@ -8,3 +8,10 @@ sealed class Resource<out T>(val datas: T? = null, val messages: String? = null)
 
 }
 
+sealed class LoginEvent {
+    object Success  : LoginEvent()
+    data class Error(val message: String) : LoginEvent()
+
+
+}
+

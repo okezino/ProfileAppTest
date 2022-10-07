@@ -15,8 +15,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.profileapp.data.model.LoginEvent
+import com.example.profileapp.ui.theme.Gray
 import com.example.profileapp.ui.theme.Purple200
 import com.example.profileapp.ui.theme.White
+import com.example.profileapp.util.LoginValidation
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -75,10 +78,21 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.padding(10.dp))
 
-                Button(onClick = { navController.navigate("user_profile_screen") },
+                Button(onClick = {
+
+                    val loginEvent = LoginValidation.validateDetails(emailValue.value, password.value)
+                    if(loginEvent == LoginEvent.Success){
+                        navController.navigate("user_profile_screen")
+                    }else  {
+                     //TODO
+                    }
+
+
+
+                    },
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
-                        .background(Purple200)
+                        .background(Gray)
                         .height(50.dp)) {
                     Text(text = "login", fontSize = 20.sp, color = White)
                 }
